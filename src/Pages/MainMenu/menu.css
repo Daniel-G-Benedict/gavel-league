@@ -1,0 +1,55 @@
+#many of the values are based on the view size (vw)
+div {
+	#border: .5px dotted;
+}
+
+body {
+  	background-color: #3a3b3c;
+}
+
+.row {
+  	display: flex;
+}
+
+.menu-column {
+  	flex: 20%;	
+}
+
+.menu-item {
+	background-image: url('./menu-item.png');
+	background-repeat: no-repeat;
+	padding: .5vw;
+	margin: .5vw;
+}
+
+.btn-column {
+  	flex: 80%;
+}
+
+.title {
+	font-size: 6vw; 
+	margin: 0;
+	color : white;
+}
+
+.menu-title {
+	font-size: 3vw; 
+}
+
+.button {
+	position: fixed;
+    bottom: 25px;
+    right: 25px;
+    font-size: 4vw; 
+}
+
+#box {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#menuLogo {
+	max-width: 50vw;
+	min-width: 10vw;
+}
