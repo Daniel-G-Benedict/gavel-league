@@ -1,21 +1,24 @@
-import React, { useEffect } from "react";
+// import framework
+import { useEffect } from "react";
+
+// import dependencies
 import Phaser from "phaser";
 import PhaserMatterCollisionPlugin from "phaser-matter-collision-plugin";
 import VirtualJoystick from 'phaser3-rex-plugins/plugins/virtualjoystick.js';
+
+// import scenes
 import MainScene from "./scenes/MainScene";
-import GameMenu from "../../Components/GameMenu/GameMenu";
 
 const config = {
-        width: window.innerWidth * window.devicePixelRatio,
-        height : window.innerHeight * window.devicePixelRatio,
-        backgroundColor : '#333333',
+       
+        backgroundColor : '#28de43',
         type: Phaser.AUTO,
         parent : '',
         scene : [MainScene],
-        scale : {
-            parent : '',
-            mode : Phaser.Scale.FIT,
-            autoCenter : Phaser.Scale.CENTER_BOTH,
+        scale: {
+            mode: Phaser.Scale.FIT,
+            width: '100%',
+            height: '100%'
         }, // close scale
         physics : {
             default : 'matter',
@@ -41,11 +44,12 @@ const config = {
     } // close config
 
     const Game = () => {
-        
+
         useEffect(() => {
-            new Phaser.Game(config);
+          //const game = new Phaser.Game(config);
         });
 
     }; // close Game
+
 
     export default Game

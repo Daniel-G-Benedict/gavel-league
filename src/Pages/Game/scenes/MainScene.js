@@ -1,13 +1,16 @@
-import { useNavigate } from "react-router-dom";
-
+// import phaser dependencies
 import Phaser from "phaser"
 import VirtualJoyStick from "phaser3-rex-plugins/plugins/virtualjoystick";
+
+// import phaser assets and classes
 import Player from "./player";
+import resize from "../../../Components/GameMenu/resize";
 
-//import assets
+//global variables
+var nearBook = false;
 
 
-export default class MainScene extends Phaser.Scene {
+export class MainScene extends Phaser.Scene {
 
     constructor() {
         super("MainScene")
@@ -16,80 +19,37 @@ export default class MainScene extends Phaser.Scene {
     preload() { 
         console.log("Preload")
         //load the bg image
-        this.load.image('bedroom', require('/Users/benedicd/Desktop/Github/gavel-league/src/Pages/Game/scenes/Assets/BR.png'));
+        this.load.image('testTile', require("/Users/benedicd/Desktop/Github/gavel-league/src/Pages/Game/scenes/Assets/testTile.png"));
+        //preload player assets
         Player.preload(this);
+        console.log("player preloaded")
     } // close preload()
 
     
     create() {
         console.log("creating game")
+
+        //console.log(GavelGame)
+
+        this.add.tileSprite(0,0,500,500, 'testTile')
               
         // get screen width and height
+
+        console.log(document.body)
         var winWidth = (document.body.offsetWidth)
         var winHeight = (document.body.offsetHeight)
 
-        this.background = this.add.image(0,0, 'bedroom')
-        .setOrigin(0,0);
+       //console.log( Phaser.Physics.Matter)
 
-        this.background.displayHeight = winHeight;
-        this.background.displayWidth = winWidth;
-
-        //console.log("The window inner height is " + window.innerHeight)
-        //console.log("The window offset height is " + document.body.offsetHeight)
+        // the width and height of the world map
+        this.cameras.main.setBounds(0, 0, 1 , 1)
+        //Phaser.Physics.Matter.World.setBounds(0, 0, winWidth, winHeight)
 
 
-        // detect the browser type         
-        let vendor = navigator.vendor;
-        //console.log(vendor)
-        // modify screen size based on vendor
-        if (vendor == "Google Inc.") {
-            console.log("the browser is " + vendor)
-            var joyX = Math.floor(winWidth * .35);
-            var joyY = Math.floor(winHeight * .8);
-
-            var menuX = Math.floor(winWidth * .85)
-            var menuY = Math.floor(winHeight * .1)
-        }
-        else {
-            console.log("the browser is " + vendor)
-            var joyX = Math.floor(winWidth * .25);
-            var joyY = Math.floor(winHeight * .75);
-
-            var menuX = Math.floor(winWidth * .85)
-            var menuY = Math.floor(winHeight * .1)
-        }
-
-        
-        //console.log("winWidth : " + winWidth + typeof(winHeight))
-        //console.log("winHeight : " + winHeight + typeof(winWidth))
-        //console.log("joyX : " + joyX + typeof(joyX))
-        //console.log("joyY : " + joyY + typeof(joyY))
-
-        // create controls
-        this.joyStick = new VirtualJoyStick(this, {
-            x:  joyX,
-            y : joyY,
-            radius: 100,
-            base: this.add.circle(0, 0, 100, 0x888888),
-            thumb: this.add.circle(0, 0, 50, 0xcccccc),
-            dir: '8dir',   // 'up&down'|0|'left&right'|1|'4dir'|2|'8dir'|3
-            // forceMin: 16,
-            // enable: true
-        })
-        .on('update', this.dumpJoyStickState, this);
-
-        // create debugging text fields
-        this.text = this.add.text(0, 0);
-        this.dumpJoyStickState();
-       
-        //console.log("The joystick X is : " + this.joyStick.x)
-        //console.log("The joystick y is : " + this.joyStick.y)
-
-        var spriteX = (winWidth/2);
-        var spriteY = (winHeight/2);
+        var spriteX = winWidth/2;
+        var spriteY = winHeight/2;
 
         this.player = new Player({scene:this, x: spriteX, y: spriteY, texture : 'player', frame: "player_1"});
-        this.add.existing(this.player);
        
         // create sprite / player
         this.player.inputKeys = this.input.keyboard.addKeys({
@@ -99,11 +59,29 @@ export default class MainScene extends Phaser.Scene {
                     left : Phaser.Input.Keyboard.KeyCodes.LEFT,
                     right : Phaser.Input.Keyboard.KeyCodes.RIGHT,
                 })// close addKeys()
-    
-        // add a "menu button"
-        const button = this.add.text(menuX, menuY, 'Close Game')
+
+        // camera should follow the player
+        this.cameras.main.startFollow(this.player, true);
+        
+        // draw safe area
+        let safeArea = this.add
+        .rectangle(
+        0,0,
+        winWidth,
+        winHeight,
+        0xff00ff,
+        0.08
+        )
+        .setStrokeStyle(4, 0xff00ff, 0.25)
+        .setOrigin(0)
+        .setDepth(2)
+        .setScrollFactor(0)
+
+       // add a "menu button"
+        let closeGame = this.add.text(safeArea.width - 84, safeArea.y + 32, ' X ')
                 .setOrigin(0)
                 .setPadding(10)
+                .setScrollFactor(0)
                 .setStyle({ color:'black', backgroundColor: 'red' })
                 .setInteractive({ useHandCursor: true })
                 .on('pointerdown', () => {
@@ -111,19 +89,49 @@ export default class MainScene extends Phaser.Scene {
                                         // Simulate an HTTP redirect:
                                         window.location.replace("./")
                                         })
-                .on('pointerover', () => button.setStyle({ fill: '#f39c12' }))
-                .on('pointerout', () => button.setStyle({ fill: '#FFF' }));
-        
-        /*
-        this.anims.create({
-            key: "walk",
-            frames : this.anims.generateFrameNumbers("player", {start : 0, end : 5}),
-            frameRate:10,
-            repeat: -1
-        })
-        */
+                .on('pointerover', () => closeGame.setStyle({ fill: '#f39c12' }))
+                .on('pointerout', () => closeGame.setStyle({ fill: '#00FF00' }));        
 
-    } // close create()
+        // add a "action button"
+        let actionButton = this.add.text(safeArea.width - 132, safeArea.height -84, 'Action')
+                .setOrigin(0)
+                .setPadding(20)
+                .setScrollFactor(0)
+                .setStyle({ color:'white', backgroundColor: 'Blue' })
+                .setInteractive({ useHandCursor: true })
+                .on('pointerdown', () => {
+                                          console.log("action!");
+                                        // Simulate an HTTP redirect:
+                                        if (nearBook == true) {
+                                            alert("Action!")
+                                        }
+                                        })
+                .on('pointerover', () => actionButton.setStyle({ fill: '#f39c12' }))
+                .on('pointerout', () => actionButton.setStyle({ fill: '#FFF' }));
+
+        // create controls
+        this.joyStick = new VirtualJoyStick(this, {
+            x:  safeArea.x + 132,
+            y : safeArea.height - 132,
+            radius: 100,
+            base: this.add.circle(0, 0, 100, 0x888888),
+            thumb: this.add.circle(0, 0, 50, 0xcccccc),
+            dir: '8dir',   // 'up&down'|0|'left&right'|1|'4dir'|2|'8dir'|3
+            // forceMin: 16,
+            // enable: true
+        })
+        .on('update', this.dumpJoyStickState, this)
+        .setScrollFactor(0);
+
+        // create debugging text fields
+        //this.text = this.add.text(0, 0);
+        this.dumpJoyStickState();
+        
+        //new new resize
+        //this.scale.on('resize', resize(), this);
+
+        console.log(this)
+    } // close create
 
     dumpJoyStickState() {
         var cursorKeys = this.joyStick.createCursorKeys();
@@ -144,18 +152,23 @@ export default class MainScene extends Phaser.Scene {
             var key = cursorKeys[name];
             s += `${name}: duration=${key.duration / 1000}\n`;
         }
-        this.text.setText(s);
+        //this.text.setText(s);
     }
 
     update() {
 
         // get screen width and height
         var winWidth = (document.body.offsetWidth)
-        var winHeight = (document.body.offsetHeight)
 
         var cursorKeys = this.joyStick.createCursorKeys()
-        this.player.update(cursorKeys,this,winWidth,winHeight)
+        this.player.update(cursorKeys,this);
+        
+        //console.log("The game component is... ");
+        //console.log(this.game.canvas.width);
+
     } // close update()
 
-
+    
 } // close MainScene
+
+export default MainScene

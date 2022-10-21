@@ -1,39 +1,36 @@
-#many of the values are based on the view size (vw)
-div {
-	#border: .5px dotted;
-}
-
-body {
-  	background-color: #3a3b3c;
-}
+/*many of the values are based on the view size (vw)*/
 
 .row {
   	display: flex;
 }
 
-.menu-column {
-  	flex: 20%;	
+.profile-column {
+	position : fixed;
+	bottom : 0;
+
+	margin-top: 16px;
+	margin-left: 16px;
+	margin-bottom: 16px;
+
+	flex: 1 1 20%;	
+
 }
 
-.menu-item {
-	background-image: url('./menu-item.png');
-	background-repeat: no-repeat;
+.profile {
+	background-color: white;
+	min-height : 32px;
 	padding: .5vw;
 	margin: .5vw;
 }
 
 .btn-column {
-  	flex: 80%;
-}
+	position : fixed;
+	bottom : 0;
 
-.title {
-	font-size: 6vw; 
-	margin: 0;
-	color : white;
-}
+	margin-right: 16px;
+	margin-bottom: 16px;
 
-.menu-title {
-	font-size: 3vw; 
+	flex: 1 1 20%;	
 }
 
 .button {
@@ -43,13 +40,31 @@ body {
     font-size: 4vw; 
 }
 
-#box {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+.container {
+	position: absolute;
+	-webkit-transform: translate(-50%, 0%);
+	transform: translate(-50%, 0%);
 }
-
-#menuLogo {
-	max-width: 50vw;
-	min-width: 10vw;
-}
+  
+  @media (orientation: landscape) {
+	.container {
+		left: 50%;
+		top: 5%;
+		width : 40vw;
+	}
+  }
+  
+  
+  @media (orientation: portrait) {
+	.container {
+	  left: 50%;
+	  top: 10%;
+	  width: 66vw;
+	}
+  }
+  
+  #container div {
+	  display: block;
+	  text-align: center;
+	  margin-bottom: 5px;
+  }
