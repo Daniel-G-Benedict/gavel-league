@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/gavel-league/static/css/main.894a0d94.css",
-    "main.js": "/gavel-league/static/js/main.c0434b8f.js",
+    "main.js": "/gavel-league/static/js/main.25e1ea87.js",
     "static/js/787.0b754525.chunk.js": "/gavel-league/static/js/787.0b754525.chunk.js",
     "static/media/Apartment.png": "/gavel-league/static/media/Apartment.a3c694d633e903b6fda7.png",
     "static/media/GL_Logo_MidFi.png": "/gavel-league/static/media/GL_Logo_MidFi.9dce5122bfc03bda8ca0.png",
@@ -9,11 +9,11 @@
     "static/media/testTile.png": "/gavel-league/static/media/testTile.b318a6af11adf783c0ba.png",
     "index.html": "/gavel-league/index.html",
     "main.894a0d94.css.map": "/gavel-league/static/css/main.894a0d94.css.map",
-    "main.c0434b8f.js.map": "/gavel-league/static/js/main.c0434b8f.js.map",
+    "main.25e1ea87.js.map": "/gavel-league/static/js/main.25e1ea87.js.map",
     "787.0b754525.chunk.js.map": "/gavel-league/static/js/787.0b754525.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.894a0d94.css",
-    "static/js/main.c0434b8f.js"
+    "static/js/main.25e1ea87.js"
   ]
 }
