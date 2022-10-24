@@ -8,6 +8,7 @@ import './App.css';
 // import Pages / "Route"
 import MainMenu from "./Pages/MainMenu/MainMenu";
 import Game from "./Pages/Game/gavel-league"
+import Score from "./Pages/Score/Score";
 import Splash from "./Pages/Splash/splash";
 import NewGame from "./Pages/Game/newGavelLeague";
 import Book from "./Pages/Book/Book";
@@ -26,6 +27,7 @@ let App = () => {
         <Route path="gavel-league/Game" element={<NewGame/>}/>
         <Route path="gavel-league/book" element={<Book/>}/>
         <Route path="gavel-league/door" element={<Door/>}/>
+        <Route path="gavel-league/score" element={<Score/>}/>
       </Routes>
       </BrowserRouter>
     </div>

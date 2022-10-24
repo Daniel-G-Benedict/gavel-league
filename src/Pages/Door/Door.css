@@ -54,7 +54,7 @@ backdrop-filter: blur(6.7px);
   margin-bottom: 0;
 }
 
-#officer-message {
+.officer-message {
   background: rgba(3, 202, 247, 0.26);
 }
 
