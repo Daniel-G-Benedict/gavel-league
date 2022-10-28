@@ -1,19 +1,21 @@
 {
   "files": {
-    "main.css": "/gavel-league/static/css/main.1ec2547b.css",
-    "main.js": "/gavel-league/static/js/main.ae37af40.js",
+    "main.css": "/gavel-league/static/css/main.de1fb856.css",
+    "main.js": "/gavel-league/static/js/main.39be2837.js",
     "static/js/787.0b754525.chunk.js": "/gavel-league/static/js/787.0b754525.chunk.js",
     "static/media/Apartment.png": "/gavel-league/static/media/Apartment.a3c694d633e903b6fda7.png",
-    "static/media/GL_Logo_MidFi.png": "/gavel-league/static/media/GL_Logo_MidFi.15929f5a2bbe232fa7cb.png",
+    "static/media/BookBG.png": "/gavel-league/static/media/BookBG.d6ddcbbe045c161eff4d.png",
+    "static/media/DoorBG.png": "/gavel-league/static/media/DoorBG.c2e4ccdd26335f14e042.png",
+    "static/media/GL_Logo_MidFi.png": "/gavel-league/static/media/GL_Logo_MidFi.c2a04707d723161faf45.png",
+    "static/media/book1.png": "/gavel-league/static/media/book1.83362b6626b0ca4f5de9.png",
     "static/media/player.png": "/gavel-league/static/media/player.51c167ef2608ecaaaa5e.png",
-    "static/media/testTile.png": "/gavel-league/static/media/testTile.b318a6af11adf783c0ba.png",
     "index.html": "/gavel-league/index.html",
-    "main.1ec2547b.css.map": "/gavel-league/static/css/main.1ec2547b.css.map",
-    "main.ae37af40.js.map": "/gavel-league/static/js/main.ae37af40.js.map",
+    "main.de1fb856.css.map": "/gavel-league/static/css/main.de1fb856.css.map",
+    "main.39be2837.js.map": "/gavel-league/static/js/main.39be2837.js.map",
     "787.0b754525.chunk.js.map": "/gavel-league/static/js/787.0b754525.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1ec2547b.css",
-    "static/js/main.ae37af40.js"
+    "static/css/main.de1fb856.css",
+    "static/js/main.39be2837.js"
   ]
 }
