@@ -1,3 +1,7 @@
+body {
+  background-color:  #04122b;
+  background-image: none;
+}
 
 h1 {
   color : white;
@@ -15,3 +19,90 @@ h2 {
 
   margin: 0px;
 }
+
+/* Style the header */
+.header {
+  background-color: red;
+  text-align: center;
+  font-size: 35px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+
+}
+
+/* Container for flexboxes */
+.row {
+  display: -webkit-flex;
+  display: flex;
+}
+
+/* Create three equal columns that sits next to each other */
+.column {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  padding: 16px;
+
+}
+
+/* Style the footer */
+.footer {
+  background-color: #f1f1f1;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media (max-width: 600px) {
+  .row {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+.primaryButton {
+	background-color: white;
+	
+	height : 8vh;
+	min-height : 32px;
+
+	width : 25vw;
+	min-width : 62px;
+
+	padding: .5vw;
+	margin: .5vw;
+
+	position : relative;
+	bottom: 0%;
+}
+/*
+
+.row {
+	border: blue;
+  border-style: solid;
+  border-width: 2px;
+  
+  display: flex; 
+
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  padding: 10px;
+
+  flex-wrap : wrap;
+
+  margin-bottom : 16px;
+}
+
+.column {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration *//*
+}*/

@@ -1,19 +1,17 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import doorBG from '/Users/benedicd/Desktop/Github/gavel-league/src/Pages/Game/scenes/Assets/DoorBG.png'
+
 import './Door.css'
 import Scenario01 from './Scenario_01';
 
-const Door = () => {
-  return(<div>
-  <h1>Hello there!</h1>
-        <h1>I am a door page.</h1>
-        <button onPointerDown={()=> {window.location.replace("./Game")}}> return to game </button>
-    </div>
-  )
-}
-
-
-const Door2 = () => {
+const Door2 = (props) => {
   console.log(Scenario01)
+
+  const navigate = useNavigate();
+  
+
    
 // Variables
 var messages = document.getElementById('message-list')
@@ -41,7 +39,7 @@ useEffect(() => {
     // get the responses to that question and make them buttons
     function makeButton(option) {
       var newButton = document.createElement('button')
-      newButton.classname = 'btn';
+      newButton.classname = 'secondaryButton';
       newButton.type = 'button';
       newButton.innerText = option;
       newButton.value = option
@@ -50,13 +48,16 @@ useEffect(() => {
         console.log(e.target.value)
         writeLine(e.target.value,'player-message')
         // check to see if the response is the correct one
-        if (e.target.value = correctrRsp) {
+        console.log(plyrRsps[correctrRsp])
+        if (e.target.value == plyrRsps[correctrRsp]) {
+          console.log("it's correct!");
           playerScore++;
+          console.log(playerScore)
         }
-        console.log(Scenario01.length)
+       // console.log(Scenario01.length)
         if (questNumb == Scenario01.length) {
           console.log("that's all folks!")
-          window.location.replace("./score")
+          navigate("/score/:" + playerScore);
         }
         else {
           setQuestion(questNumb)
@@ -67,7 +68,7 @@ useEffect(() => {
       responseArea.appendChild(newButton)
     }
     // get the current question and put it in the chat
-    writeLine(offMsg + " number " + questNumb, 'officer-message');
+    writeLine(offMsg , 'officer-message');
 
     var responseArea = document.getElementById('message-input');
     responseArea.innerHTML = "";
@@ -102,6 +103,7 @@ function addMessage(e){
 
 return (
   <div>
+  <img id="doorBG" src={doorBG}></img>
   <div id="chat">
     <div id="messages">
       <ul id="message-list">
@@ -109,7 +111,7 @@ return (
       <div id="message-input">
         </div>
     </div>
-  <button className="btn" onPointerDown={()=> {window.location.replace("./Game")}}> return to game </button>
+  <button className="btn" onPointerDown={()=> {navigate("/Game/:1")}}> return to game </button>
   </div>
 </div>
 )

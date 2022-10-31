@@ -1,8 +1,13 @@
- import './Book.css'
+ import { useNavigate } from 'react-router-dom'
+
+ import DoorBG from '/Users/benedicd/Desktop/Github/gavel-league/src/Pages/Game/scenes/Assets/BookBG.png'
+import './Book.css'
  
 
 
  const Book = () => {
+
+	const navigate = useNavigate();
    
 // source : https://codepen.io/yoann-b/pen/jOLjjOP
 
@@ -10,16 +15,21 @@
 
 
 <main>
+	<img id="bookBG" src={DoorBG} alt="image of living room under the book"></img>
 	<div className="book">
 		<div className="book-cover">
 			<div>
-				<booktitle>Miranda Rights</booktitle>
+				<div id="bookTitle">Miranda Rights</div>
 				<div className="separator"></div>
 				<h2>By Dominique Douglas</h2>
 			</div>
 		</div>
 		<div className="book-content">
-			<h3>An Introduction to Miranda Rights</h3>
+
+    		<button onPointerDown={()=> {navigate("/Game/:1")}}> Close </button>
+
+
+			<h3>Miranda Rights</h3>
 
 			<p><b>Miranda rights: </b>The set of rights that a person accused or suspected of having committed a specific offense has during interrogation and of which he or she must be informed prior to questioning, as stated by the U.S. Supreme Court in deciding Miranda v. Arizona and related cases.</p>
             
@@ -34,7 +44,6 @@
 
 			</div>
 	</div>
-    <button onPointerDown={()=> {window.location.replace("./Game")}}> return to game </button>
 </main>
     </div>
    )

@@ -1,8 +1,4 @@
-body {
-  	background-color:  #3a3b3c;
-}
-
-img {
+#splashLogo {
     width: 100%;
     object-fit: contain;
 }
@@ -59,5 +55,4 @@ img {
 	font-weight: bold;
 	margin: 0;
   color : white;
-
 }

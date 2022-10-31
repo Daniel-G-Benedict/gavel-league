@@ -1,8 +1,5 @@
-body {
-  	background-color:  #3a3b3c;
-}
-
-img {
+#expLogo {
+    z-index: -1;
     width: 100%;
     object-fit: contain;
 }
@@ -42,16 +39,19 @@ img {
     margin-bottom: 5px;
 }
 
-#progressBg {
+#expBG {
+  position: relative;
+  top : -25;
   width: 100;
   height: 15px;
-  background-color: gray;
+  background-color: white;
   border-radius: 25px;
+  z-index: 1;
 }
 
-#progressFg {
+#expFG {
   height: 15px;
-  background-color: white;
+  background-color: #d7c24c;
   border-radius: 25px;
 }
 
@@ -60,4 +60,21 @@ img {
 	margin: 0;
   color : white;
 
+}
+
+#performance {
+  color : white;
+  font-size: 24px;
+}
+
+#commandArea { 
+  display : flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+#commandArea .btn {
+display: inline-block;
+margin-right: 16px;
+ width: 100px;
 }

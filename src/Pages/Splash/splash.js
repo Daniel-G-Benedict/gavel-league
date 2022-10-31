@@ -23,7 +23,7 @@ useEffect (() => {
       if (width >= 100) {
         clearInterval(id);
         i = 0;
-        navigate('./Main-Menu')
+        navigate('Main-Menu')
       } else {
         width += .5;
         elem.style.width = width + "%";
@@ -36,7 +36,7 @@ return (
 //<div onLoad="javascript:move()"/>
 <div id="container">
   <div>
-  	<img src={logo} alt="Gavel League Logo"></img>
+  	<img id="splashLogo" src={logo} alt="Gavel League Logo"></img>
   </div>
   <div id="title">
   	Gavel League
